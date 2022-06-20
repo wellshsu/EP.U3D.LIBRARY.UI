@@ -1,5 +1,5 @@
 {
-  "name": "ep.u3d.runtime.ui",
+  "name": "ep.u3d.library.ui",
   "displayName": "EP.U3D.LIBRARY.UI",
   "description": "UI module.",
   "version": "0.0.2",
