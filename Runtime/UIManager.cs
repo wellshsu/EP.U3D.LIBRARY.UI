@@ -51,7 +51,7 @@ namespace EP.U3D.LIBRARY.UI
             {
                 for (int i = 0; i < CachedWindows.Count; i++)
                 {
-                    UIWindow record = OpenedWindows[i];
+                    UIWindow record = CachedWindows[i];
                     if (record.Meta.Name() == meta.Name())
                     {
                         window = record;
