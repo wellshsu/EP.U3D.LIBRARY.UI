@@ -933,5 +933,19 @@ namespace EP.U3D.LIBRARY.UI
                 parent.GetChild(i).gameObject.SetActive(true);
             }
         }
+
+        public static void RefreshObSort(Object obj, string path)
+        {
+            ILayoutController obSort = GetComponent(obj, path, typeof(ContentSizeFitter)) as ContentSizeFitter;
+            if (obSort == null)
+            {
+                obSort = GetComponent(obj, path, typeof(HorizontalLayoutGroup)) as HorizontalLayoutGroup;
+            }
+            if (obSort != null)
+            {
+                obSort.SetLayoutHorizontal();
+                obSort.SetLayoutVertical();
+            }
+        }
     }
 }
