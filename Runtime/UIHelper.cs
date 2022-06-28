@@ -67,7 +67,7 @@ namespace EP.U3D.LIBRARY.UI
 
         public static void SetButtonEvent(Object rootObj, System.Action<GameObject> func)
         {
-            SetButtonEvent(rootObj, func);
+            SetButtonEvent(rootObj, null, func);
         }
 
         public static void SetButtonEvent(Object parentObj, string path, System.Action<GameObject> func)
