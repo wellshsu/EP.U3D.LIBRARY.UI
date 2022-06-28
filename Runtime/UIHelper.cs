@@ -934,7 +934,7 @@ namespace EP.U3D.LIBRARY.UI
             }
         }
 
-        public static void RefreshObSort(Object obj, string path)
+        public static void RefreshObSort(Object obj, string path = "")
         {
             ILayoutController obSort = GetComponent(obj, path, typeof(ContentSizeFitter)) as ContentSizeFitter;
             if (obSort == null)
