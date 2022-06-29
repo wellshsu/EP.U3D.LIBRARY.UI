@@ -86,12 +86,15 @@ namespace EP.U3D.LIBRARY.UI
 
         public static UIWindow FindOpenedWindow(UIMeta meta)
         {
-            for (int i = 0; i < OpenedWindows.Count; i++)
+            if (meta != null)
             {
-                UIWindow record = OpenedWindows[i];
-                if (record.Meta.Name() == meta.Name())
+                for (int i = 0; i < OpenedWindows.Count; i++)
                 {
-                    return record;
+                    UIWindow record = OpenedWindows[i];
+                    if (record.Meta.Name() == meta.Name())
+                    {
+                        return record;
+                    }
                 }
             }
             return null;
@@ -108,9 +111,9 @@ namespace EP.U3D.LIBRARY.UI
             {
                 UIHelper.SetActiveState(window.Panel, true);
             }
-            UIWindow belowWindow = FindOpenedWindow(below);
-            UIWindow aboveWindow = FindOpenedWindow(above);
-            ArrangeWindow(window, belowWindow, aboveWindow);
+            UIWindow belowWin = FindOpenedWindow(below);
+            UIWindow aboveWin = FindOpenedWindow(above);
+            ArrangeWindow(window, belowWin, aboveWin);
             return window;
         }
 
@@ -148,7 +151,6 @@ namespace EP.U3D.LIBRARY.UI
                     OpenedWindows.Add(window);
                 }
             }
-
             int index = OpenedWindows.Count - 1;
             bool lastWindowFocused = false;
             while (index >= 0)
@@ -275,12 +277,15 @@ namespace EP.U3D.LIBRARY.UI
 
         public static UIWindow IsWindowOpened(UIMeta meta)
         {
-            for (int i = 0; i < OpenedWindows.Count; i++)
+            if (meta != null)
             {
-                UIWindow record = OpenedWindows[i];
-                if (record.Meta.Name() == meta.Name())
+                for (int i = 0; i < OpenedWindows.Count; i++)
                 {
-                    return record;
+                    UIWindow record = OpenedWindows[i];
+                    if (record.Meta.Name() == meta.Name())
+                    {
+                        return record;
+                    }
                 }
             }
             return null;
