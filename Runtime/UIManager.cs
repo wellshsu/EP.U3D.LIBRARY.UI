@@ -152,19 +152,28 @@ namespace EP.U3D.LIBRARY.UI
                 }
             }
             int index = OpenedWindows.Count - 1;
+            int rqIndex = index;
             bool lastWindowFocused = false;
             while (index >= 0)
             {
                 UIWindow record = OpenedWindows[index];
-                record.Panel.sortingOrder = record.Meta.FixedRQ();
-                if (lastWindowFocused || record.Meta.Focus())
+                if (record.Meta.FixedRQ() > 0)
                 {
-                    UIHelper.SetComponentEnabled(record.Panel, typeof(UnityEngine.UI.GraphicRaycaster), false);
+                    record.Panel.sortingOrder = record.Meta.FixedRQ();
                 }
                 else
                 {
+                    record.Panel.sortingOrder = 1000 + (rqIndex - 1) * 500;
+                    rqIndex -= 1;
+                }
+                if (lastWindowFocused == false && record.Meta.Focus())
+                {
                     UIHelper.SetComponentEnabled(record.Panel, typeof(UnityEngine.UI.GraphicRaycaster), true);
                     lastWindowFocused = true;
+                }
+                else
+                {
+                    UIHelper.SetComponentEnabled(record.Panel, typeof(UnityEngine.UI.GraphicRaycaster), false);
                 }
                 index--;
             }
