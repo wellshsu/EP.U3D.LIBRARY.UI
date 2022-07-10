@@ -472,17 +472,24 @@ namespace EP.U3D.LIBRARY.UI
             if (type == null)
             {
                 Helper.LogError("missing type argument");
-                return NIL_OBJECT_ARR;
+                return null;
             }
+            System.Array arr;
             Transform root = GetTransform(parentObj, path);
             if (root && root.gameObject)
             {
-                return root.gameObject.GetComponentsInParent(type, includeInactive);
+                var comps = root.gameObject.GetComponentsInParent(type, includeInactive);
+                arr = System.Array.CreateInstance(type, comps.Length);
+                for (int i = 0; i < comps.Length; i++)
+                {
+                    arr.SetValue(comps[i], i);
+                }
             }
             else
             {
-                return NIL_OBJECT_ARR;
+                arr = System.Array.CreateInstance(type, 0);
             }
+            return arr as object[];
         }
 
         public static object[] GetComponents(Object rootObj, System.Type type)
@@ -495,17 +502,24 @@ namespace EP.U3D.LIBRARY.UI
             if (type == null)
             {
                 Helper.LogError("missing type argument");
-                return NIL_OBJECT_ARR;
+                return null;
             }
+            System.Array arr;
             Transform root = GetTransform(parentObj, path);
             if (root && root.gameObject)
             {
-                return root.gameObject.GetComponents(type);
+                var comps = root.gameObject.GetComponents(type);
+                arr = System.Array.CreateInstance(type, comps.Length);
+                for (int i = 0; i < comps.Length; i++)
+                {
+                    arr.SetValue(comps[i], i);
+                }
             }
             else
             {
-                return NIL_OBJECT_ARR;
+                arr = System.Array.CreateInstance(type, 0);
             }
+            return arr as object[];
         }
 
         public static object[] GetComponentsInChildren(Object rootObj, System.Type type, bool includeInactive = false)
@@ -518,17 +532,24 @@ namespace EP.U3D.LIBRARY.UI
             if (type == null)
             {
                 Helper.LogError("missing type argument");
-                return NIL_OBJECT_ARR;
+                return null;
             }
+            System.Array arr;
             Transform root = GetTransform(parentObj, path);
             if (root && root.gameObject)
             {
-                return root.gameObject.GetComponentsInChildren(type, includeInactive);
+                var comps = root.gameObject.GetComponentsInChildren(type, includeInactive);
+                arr = System.Array.CreateInstance(type, comps.Length);
+                for (int i = 0; i < comps.Length; i++)
+                {
+                    arr.SetValue(comps[i], i);
+                }
             }
             else
             {
-                return NIL_OBJECT_ARR;
+                arr = System.Array.CreateInstance(type, 0);
             }
+            return arr as object[];
         }
 
         public static object AddComponent(Object rootObj, System.Type type)
